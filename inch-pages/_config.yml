@@ -1,0 +1,16 @@
+# Dependencies
+markdown:         redcarpet
+pygments:         true
+
+# Permalinks
+permalink:        pretty
+
+exclude:          ["Gemfile*", "README*", "Rakefile", "repo.html"]
+
+# Setup
+title:            Inch Pages
+tagline:          "Documentation badges for Ruby"
+
+inch_pages:
+  project_yaml_url: "https://github.com/rrrene/inch-pages/edit/master/_projects.yml"
+  new_issue_url: "https://github.com/rrrene/inch-pages/issues/new"

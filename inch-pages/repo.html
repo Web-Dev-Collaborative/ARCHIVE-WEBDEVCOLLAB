@@ -1,0 +1,93 @@
+---
+layout: default
+---
+
+<div class="repo-wrapper">
+  <div class="repo-card">
+    <div class="badge-info">
+      <a href="#" onclick="$('#badge-image-markup').toggle();"><img src="/github/{{ page.repo.name }}.png"> &#9660;</a>
+    </div>
+    <div id="badge-image-markup" style="display: none;">
+      <p>
+        <label>Image URL:</label>
+        <input value="http://inch-pages.github.io/github/{{ page.repo.name }}.png" type="text" class="url" onClick="this.select();">
+      </p>
+      <p>
+        <label>Markdown:</label>
+        <input value="[![Inline docs](http://inch-pages.github.io/github/{{ page.repo.name }}.png)](http://inch-pages.github.io/github/{{ page.repo.name }})" type="text" class="url" onClick="this.select();">
+      </p>
+      <p>
+        <label>Textile:</label>
+        <input value="!http://inch-pages.github.io/github/{{ page.repo.name }}.png!:http://inch-pages.github.io/github/{{ page.repo.name }}" type="text" class="url" onClick="this.select();">
+      </p>
+      <p>
+        <label>RDoc:</label>
+        <input value='{<img src="http://inch-pages.github.io/github/{{ page.repo.name }}.png" alt="Inline docs" />}[http://inch-pages.github.io/github/{{ page.repo.name }}]' type="text" class="url" onClick="this.select();">
+      </p>
+    </div>
+
+    <div class="topbar">
+      <h1>
+        {{ page.repo.name }}
+        <a target="_blank" class="github-link" href="{{ page.repo.url }}"><img alt="Github mark 32px" class="github-logo" src="/public/images/GitHub-Mark-32px.png" /></a>
+      </h1>
+      <p class="description">
+        {{ page.repo.description }}
+        {% if page.repo.documentation_url != "" %}
+          &ndash;
+          <a target="_blank" href="{{ page.repo.documentation_url }}">Read the documentation</a>
+        {% endif %}
+      </p>
+    </div>
+
+    <div class="stats">
+      <div class='progress'>
+        <div class='progress-bar progress-bar-A' data-placement='bottom' data-toggle='tooltip' style='width: {{ page.repo.A.percent }}%' title='Really good'></div>
+        <div class='progress-bar progress-bar-B' data-placement='bottom' data-toggle='tooltip' style='width: {{ page.repo.B.percent }}%' title='Properly documented'></div>
+        <div class='progress-bar progress-bar-C' data-placement='bottom' data-toggle='tooltip' style='width: {{ page.repo.C.percent }}%' title='Needs work'></div>
+        <div class='progress-bar progress-bar-U' data-placement='bottom' data-toggle='tooltip' style='width: {{ page.repo.U.percent }}%' title='Undocumented'></div>
+      </div>
+    </div>
+    <div class="repo-info">
+      <div class="explanation">
+        {% markdown %}{% include repo/explanation.md %}{% endmarkdown %}
+      </div>
+
+      {% include repo/grade_lists.html %}
+
+
+      <div class="everything-box">
+        <b>Everything Inch Pages</b>
+        <ul>
+          <li><a href="/participate?repo={{ page.repo.name | url_escape }}">Get your own badge!</a></li>
+          <li><a target="_blank" href="http://trivelop.de/2014/02/24/visibility-of-documentation/">Raising the visibility of inline-docs</a></li>
+          <li><a target="_blank" href="http://trivelop.de/2014/02/17/why-inch-doesnot-use-percentages/">Why Inch doesn't use percentages</a></li>
+          <li><a target="_blank" href="http://trivelop.de/inch">Inch project page</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <a name="about"></a>
+    <div class="what-is-this">
+      {% markdown %}{% include repo/about.md %}{% endmarkdown %}
+    </div>
+  </div>
+</div>
+<!--
+I just added the badge you requested to your README: ![Inline docs](http://inch-pages.github.io/github/{{ page.repo.name | url_escape }}.png)
+
+Your status page for this project is http://inch-pages.github.io/github/{{ page.repo.name | url_escape }}
+
+Thanks for giving this a shot!
+-->
+<!--
+Hi there,
+
+this patch adds a docs badge to the README to show off inline-documentation to potential contributors: [![Inline docs](http://inch-pages.github.io/github/{{ page.repo.name | url_escape }}.png)](http://inch-pages.github.io/github/{{ page.repo.name | url_escape }})
+
+The badge links to [Inch Pages](http://inch-pages.github.io), a project that tries to raise the visibility of inline-docs to encourage aspiring Rubyists to document their code. Your status page is http://inch-pages.github.io/github/{{ page.repo.name | url_escape }}/
+
+Inch Pages is still a young project, but already used by projects like [Guard](https://github.com/guard/guard), [Haml](https://github.com/haml/haml), [Pry](https://github.com/pry/pry), and [ROM](https://github.com/rom-rb/rom).
+
+What do you think?
+-->
