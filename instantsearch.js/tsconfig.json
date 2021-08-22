@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "ESNEXT",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "strict": true,
+    "jsx": "react",
+    "jsxFactory": "h",
+    // @TODO: It's mandatory to disable this strict check at the moment,
+    // otherwise we have to type every import we use. The migration is an
+    // incremental process so we import JavaScript modules from TypeScript ones.
+    // The compiler always translates those imports as implicit `any`.
+    "noImplicitAny": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true
+  },
+  "exclude": [
+    "examples",
+    "es",
+    // these two files are temporarily excluded because
+    // they import files from node_modules/search-insights directly
+    // and it causes the type-checking to fail.
+    "src/middlewares/__tests__/createInsightsMiddleware.ts",
+    "test/mock/createInsightsClient.ts"
+  ]
+}

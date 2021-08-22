@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`menu render renders transformed items 1`] = `
+Object {
+  "canToggleShowMore": false,
+  "createURL": [Function],
+  "cssClasses": Object {
+    "count": "ais-Menu-count",
+    "disabledShowMore": "ais-Menu-showMore--disabled",
+    "item": "ais-Menu-item",
+    "label": "ais-Menu-label",
+    "link": "ais-Menu-link",
+    "list": "ais-Menu-list",
+    "noRefinementRoot": "ais-Menu--noRefinement",
+    "root": "ais-Menu",
+    "selectedItem": "ais-Menu-item--selected",
+    "showMore": "ais-Menu-showMore",
+  },
+  "depth": 0,
+  "facetValues": Array [
+    Object {
+      "count": 456,
+      "data": null,
+      "exhaustive": true,
+      "isRefined": false,
+      "label": "bar",
+      "transformed": true,
+      "url": "#",
+      "value": "bar",
+    },
+    Object {
+      "count": 123,
+      "data": null,
+      "exhaustive": true,
+      "isRefined": false,
+      "label": "foo",
+      "transformed": true,
+      "url": "#",
+      "value": "foo",
+    },
+  ],
+  "isShowingMore": false,
+  "showMore": undefined,
+  "templateProps": Object {
+    "templates": Object {
+      "item": "<a class=\\"{{cssClasses.link}}\\" href=\\"{{url}}\\"><span class=\\"{{cssClasses.label}}\\">{{label}}</span><span class=\\"{{cssClasses.count}}\\">{{#helpers.formatNumber}}{{count}}{{/helpers.formatNumber}}</span></a>",
+      "showMoreText": "
+    {{#isShowingMore}}
+      Show less
+    {{/isShowingMore}}
+    {{^isShowingMore}}
+      Show more
+    {{/isShowingMore}}
+  ",
+    },
+    "templatesConfig": Object {},
+    "useCustomCompileOptions": Object {
+      "item": false,
+      "showMoreText": false,
+    },
+  },
+  "toggleRefinement": [Function],
+  "toggleShowMore": [Function],
+}
+`;
+
+exports[`menu render snapshot 1`] = `
+Object {
+  "canToggleShowMore": false,
+  "createURL": [Function],
+  "cssClasses": Object {
+    "count": "ais-Menu-count",
+    "disabledShowMore": "ais-Menu-showMore--disabled",
+    "item": "ais-Menu-item",
+    "label": "ais-Menu-label",
+    "link": "ais-Menu-link",
+    "list": "ais-Menu-list",
+    "noRefinementRoot": "ais-Menu--noRefinement",
+    "root": "ais-Menu",
+    "selectedItem": "ais-Menu-item--selected",
+    "showMore": "ais-Menu-showMore",
+  },
+  "depth": 0,
+  "facetValues": Array [
+    Object {
+      "count": 456,
+      "data": null,
+      "exhaustive": true,
+      "isRefined": false,
+      "label": "bar",
+      "url": "#",
+      "value": "bar",
+    },
+    Object {
+      "count": 123,
+      "data": null,
+      "exhaustive": true,
+      "isRefined": false,
+      "label": "foo",
+      "url": "#",
+      "value": "foo",
+    },
+  ],
+  "isShowingMore": false,
+  "showMore": undefined,
+  "templateProps": Object {
+    "templates": Object {
+      "item": "<a class=\\"{{cssClasses.link}}\\" href=\\"{{url}}\\"><span class=\\"{{cssClasses.label}}\\">{{label}}</span><span class=\\"{{cssClasses.count}}\\">{{#helpers.formatNumber}}{{count}}{{/helpers.formatNumber}}</span></a>",
+      "showMoreText": "
+    {{#isShowingMore}}
+      Show less
+    {{/isShowingMore}}
+    {{^isShowingMore}}
+      Show more
+    {{/isShowingMore}}
+  ",
+    },
+    "templatesConfig": Object {},
+    "useCustomCompileOptions": Object {
+      "item": false,
+      "showMoreText": false,
+    },
+  },
+  "toggleRefinement": [Function],
+  "toggleShowMore": [Function],
+}
+`;

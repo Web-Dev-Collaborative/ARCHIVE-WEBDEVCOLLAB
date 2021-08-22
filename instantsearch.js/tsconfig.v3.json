@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig",
+  "exclude": [
+    "examples",
+    "es",
+    // this test has specific code for v3 and v4, so already checked in the v4 test
+    "src/middlewares/__tests__/createMetadataMiddleware.ts",
+    // these two files are temporarily excluded because
+    // they import files from node_modules/search-insights directly
+    // and it causes the type-checking to fail.
+    "src/middlewares/__tests__/createInsightsMiddleware.ts",
+    "test/mock/createInsightsClient.ts",
+    // v3 has a wrong definition for optionalWords (only accepts string[])
+    "src/connectors/voice-search/__tests__/connectVoiceSearch-test.ts"
+  ]
+}

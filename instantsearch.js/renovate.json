@@ -1,0 +1,13 @@
+{
+  "extends": ["config:js-lib", "algolia"],
+  "ignorePresets": [
+    ":ignoreModulesAndTests"
+  ],
+  "packageRules": [
+    {
+      "packagePatterns": ["^@types"],
+      "depTypeList": ["devDependencies"],
+      "rangeStrategy": "replace"
+    }
+  ]
+}

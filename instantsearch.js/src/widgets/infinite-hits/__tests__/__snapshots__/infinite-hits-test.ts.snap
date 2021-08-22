@@ -1,0 +1,171 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`infiniteHits() calls twice render(<Hits props />, container) 1`] = `
+Object {
+  "bindEvent": [Function],
+  "cssClasses": Object {
+    "disabledLoadMore": "ais-InfiniteHits-loadMore--disabled",
+    "disabledLoadPrevious": "ais-InfiniteHits-loadPrevious--disabled",
+    "emptyRoot": "ais-InfiniteHits--empty",
+    "item": "ais-InfiniteHits-item",
+    "list": "ais-InfiniteHits-list",
+    "loadMore": "ais-InfiniteHits-loadMore",
+    "loadPrevious": "ais-InfiniteHits-loadPrevious",
+    "root": "ais-InfiniteHits root cx",
+  },
+  "hasShowPrevious": false,
+  "hits": Array [
+    Object {
+      "__position": 3,
+      "first": "hit",
+      "second": "hit",
+    },
+  ],
+  "insights": undefined,
+  "isFirstPage": true,
+  "isLastPage": false,
+  "results": Object {
+    "hits": Array [
+      Object {
+        "__position": 3,
+        "first": "hit",
+        "second": "hit",
+      },
+    ],
+    "hitsPerPage": 2,
+    "page": 1,
+  },
+  "sendEvent": [Function],
+  "showMore": [Function],
+  "showPrevious": [Function],
+  "templateProps": Object {
+    "templates": Object {
+      "empty": "No results",
+      "item": [Function],
+      "showMoreText": "Show more results",
+      "showPreviousText": "Show previous results",
+    },
+    "templatesConfig": Object {},
+    "useCustomCompileOptions": Object {
+      "empty": false,
+      "item": false,
+      "showMoreText": false,
+      "showPreviousText": false,
+    },
+  },
+}
+`;
+
+exports[`infiniteHits() calls twice render(<Hits props />, container) 2`] = `
+Object {
+  "bindEvent": [Function],
+  "cssClasses": Object {
+    "disabledLoadMore": "ais-InfiniteHits-loadMore--disabled",
+    "disabledLoadPrevious": "ais-InfiniteHits-loadPrevious--disabled",
+    "emptyRoot": "ais-InfiniteHits--empty",
+    "item": "ais-InfiniteHits-item",
+    "list": "ais-InfiniteHits-list",
+    "loadMore": "ais-InfiniteHits-loadMore",
+    "loadPrevious": "ais-InfiniteHits-loadPrevious",
+    "root": "ais-InfiniteHits root cx",
+  },
+  "hasShowPrevious": false,
+  "hits": Array [
+    Object {
+      "__position": 3,
+      "first": "hit",
+      "second": "hit",
+    },
+  ],
+  "insights": undefined,
+  "isFirstPage": true,
+  "isLastPage": false,
+  "results": Object {
+    "hits": Array [
+      Object {
+        "__position": 3,
+        "first": "hit",
+        "second": "hit",
+      },
+    ],
+    "hitsPerPage": 2,
+    "page": 1,
+  },
+  "sendEvent": [Function],
+  "showMore": [Function],
+  "showPrevious": [Function],
+  "templateProps": Object {
+    "templates": Object {
+      "empty": "No results",
+      "item": [Function],
+      "showMoreText": "Show more results",
+      "showPreviousText": "Show previous results",
+    },
+    "templatesConfig": Object {},
+    "useCustomCompileOptions": Object {
+      "empty": false,
+      "item": false,
+      "showMoreText": false,
+      "showPreviousText": false,
+    },
+  },
+}
+`;
+
+exports[`infiniteHits() renders transformed items 1`] = `
+Object {
+  "bindEvent": [Function],
+  "cssClasses": Object {
+    "disabledLoadMore": "ais-InfiniteHits-loadMore--disabled",
+    "disabledLoadPrevious": "ais-InfiniteHits-loadPrevious--disabled",
+    "emptyRoot": "ais-InfiniteHits--empty",
+    "item": "ais-InfiniteHits-item",
+    "list": "ais-InfiniteHits-list",
+    "loadMore": "ais-InfiniteHits-loadMore",
+    "loadPrevious": "ais-InfiniteHits-loadPrevious",
+    "root": "ais-InfiniteHits",
+  },
+  "hasShowPrevious": false,
+  "hits": Array [
+    Object {
+      "__position": 3,
+      "first": "hit",
+      "second": "hit",
+      "transformed": true,
+    },
+  ],
+  "insights": [Function],
+  "isFirstPage": true,
+  "isLastPage": false,
+  "results": Object {
+    "hits": Array [
+      Object {
+        "__position": 3,
+        "first": "hit",
+        "second": "hit",
+        "transformed": true,
+      },
+    ],
+    "hitsPerPage": 2,
+    "page": 1,
+  },
+  "sendEvent": [Function],
+  "showMore": [Function],
+  "showPrevious": [Function],
+  "templateProps": Object {
+    "templates": Object {
+      "empty": "No results",
+      "item": [Function],
+      "showMoreText": "Show more results",
+      "showPreviousText": "Show previous results",
+    },
+    "templatesConfig": Object {},
+    "useCustomCompileOptions": Object {
+      "empty": false,
+      "item": false,
+      "showMoreText": false,
+      "showPreviousText": false,
+    },
+  },
+}
+`;

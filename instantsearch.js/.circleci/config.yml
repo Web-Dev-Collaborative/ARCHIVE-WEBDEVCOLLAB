@@ -1,0 +1,167 @@
+aliases:
+  - &install_yarn_version
+    name: Install specific Yarn version
+    command: |
+      curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.13.0
+      echo 'export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"' >> $BASH_ENV
+
+  - &restore_yarn_cache
+    name: Restore Yarn cache
+    keys:
+      - yarn-{{ .Branch }}-packages-{{ checksum "yarn.lock" }}
+
+  - &save_yarn_cache
+    name: Save Yarn cache
+    key: yarn-{{ .Branch }}-packages-{{ checksum "yarn.lock" }}
+    paths:
+      - ~/.cache/yarn
+
+  - &run_yarn_install
+    name: Install dependencies
+    command: yarn install
+
+defaults: &defaults
+  working_directory: ~/instantsearchjs
+  docker:
+    - image: circleci/node:12.14.1@sha256:62d7dc3a6cca1e5225333d995ba66e2abb1aed61adeaf6029fb320654d632b38
+
+version: 2
+jobs:
+  'build and size':
+    <<: *defaults
+    steps:
+      - checkout
+      - run: *install_yarn_version
+      - restore_cache: *restore_yarn_cache
+      - run: *run_yarn_install
+      - save_cache: *save_yarn_cache
+      - run:
+          name: Build & Test packages size
+          command: |
+            yarn run build
+            yarn run test:size
+
+  lint:
+    <<: *defaults
+    steps:
+      - checkout
+      - run: *install_yarn_version
+      - restore_cache: *restore_yarn_cache
+      - run: *run_yarn_install
+      - save_cache: *save_yarn_cache
+      - run:
+          name: Lint & Code styles
+          command: yarn run lint
+      - run:
+          name: Type Checking
+          command: yarn run type-check
+
+  'type check algoliasearch v3':
+    <<: *defaults
+    steps:
+      - checkout
+      - run: *install_yarn_version
+      - restore_cache: *restore_yarn_cache
+      - run: *run_yarn_install
+      - save_cache: *save_yarn_cache
+      - run:
+          name: Update dependencies
+          command: |
+            yarn remove @algolia/client-search
+            yarn add @types/algoliasearch@3.34.10 algoliasearch@3.35.1
+      - run:
+          name: Type Checking
+          command: yarn run type-check:v3
+
+  'unit tests':
+    <<: *defaults
+    steps:
+      - checkout
+      - run: *install_yarn_version
+      - restore_cache: *restore_yarn_cache
+      - run: *run_yarn_install
+      - save_cache: *save_yarn_cache
+      - run:
+          name: Unit tests
+          command: yarn run test --maxWorkers=4
+
+  'e2e tests':
+    <<: *defaults
+    steps:
+      - checkout
+      - run: *install_yarn_version
+      - restore_cache: *restore_yarn_cache
+      - run: *run_yarn_install
+      - save_cache: *save_yarn_cache
+      - run:
+          name: End-2-End tests
+          command: |
+            yarn run website:build
+            yarn run test:e2e:saucelabs
+
+  'type check js (optional)':
+    <<: *defaults
+    steps:
+      - checkout
+      - run: *install_yarn_version
+      - restore_cache: *restore_yarn_cache
+      - run: *run_yarn_install
+      - save_cache: *save_yarn_cache
+      - run:
+          name: Type Checking including JS files
+          command: yarn run type-check:js
+
+  'release if needed':
+    <<: *defaults
+    steps:
+      - checkout
+      - run: *install_yarn_version
+      - restore_cache: *restore_yarn_cache
+      - run: *run_yarn_install
+      - save_cache: *save_yarn_cache
+      - run:
+          name: Trigger a release if the latest commit is a release commit
+          command: |
+            yarn shipjs trigger
+
+  'prepare release':
+    <<: *defaults
+    steps:
+      - checkout
+      - run: *install_yarn_version
+      - restore_cache: *restore_yarn_cache
+      - run: *run_yarn_install
+      - save_cache: *save_yarn_cache
+      - run:
+          name: Prepare a pull request for next release
+          command: |
+            git config --global user.email "instantsearch-bot@algolia.com"
+            git config --global user.name "InstantSearch"
+            yarn run release --yes --no-browse
+
+workflows:
+  version: 2
+  ci:
+    jobs:
+      - build and size
+      - unit tests
+      - lint
+      - type check algoliasearch v3
+      - type check js (optional)
+      - e2e tests
+      - 'release if needed':
+          filters:
+            branches:
+              only:
+                - master
+                - next
+  'scheduled release':
+    triggers:
+      - schedule:
+          cron: '0 9 * * 2'
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - prepare release
