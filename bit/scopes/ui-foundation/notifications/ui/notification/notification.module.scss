@@ -1,0 +1,81 @@
+$animationTime: 300ms;
+
+.timestamp {
+  font-size: 0.85em;
+}
+
+.notification {
+  display: flex;
+  align-items: start; // align to top
+  padding: 16px;
+  max-width: 330px;
+  min-width: 230px;
+  transform-origin: right bottom;
+  max-height: 100vh;
+  transition: all $animationTime, max-height $animationTime / 2 ease-out;
+
+  animation: enter $animationTime forwards;
+  box-shadow: var(--shadow-faint);
+  background: var(--bg-tooltip, white);
+
+  &.dismissing {
+    animation: exit $animationTime forwards;
+    overflow: hidden;
+    max-height: 0px;
+    margin: 0px;
+    padding: 0px;
+  }
+}
+
+.main {
+  flex-grow: 1;
+  margin-right: 8px;
+}
+
+.type {
+  font-weight: bold;
+  text-transform: capitalize;
+  margin-bottom: 4px;
+}
+
+.message {
+  margin-bottom: 8px;
+}
+
+.icon {
+  justify-self: start;
+  margin-right: 16px;
+  font-size: 24px;
+  width: 24px;
+}
+
+@keyframes exit {
+  0% {
+    transform: translate(0%, 0) scale(1);
+    opacity: 1;
+  }
+
+  99% {
+    transform: translate(200%, 0) scale(0.1);
+    opacity: 0;
+  }
+  100% {
+    visibility: hidden;
+  }
+}
+
+@keyframes enter {
+  0% {
+    transform: translate(200%, 0) scale(0.1);
+    opacity: 0;
+  }
+
+  99% {
+    transform: translate(0%, 0) scale(1);
+    opacity: 1;
+  }
+}
+
+:export {
+  dismissTime: $animationTime / 1ms;
+}

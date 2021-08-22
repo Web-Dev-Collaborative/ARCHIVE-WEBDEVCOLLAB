@@ -1,0 +1,92 @@
+.versionDropdown {
+  height: 100%;
+  > div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .menu {
+    width: 300px;
+    padding: 0;
+    right: 0;
+    // top: 43px;
+    font-size: var(--p-xs);
+    border-radius: 6px;
+  }
+}
+
+.title {
+  padding: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 8px;
+}
+
+.versionContainer {
+  max-height: 240px;
+  overflow-y: scroll;
+}
+.versionLine {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 24px;
+  text-decoration: none;
+  color: var(--text-highlight);
+  &:hover {
+    background-color: var(--bg-topping-highlight);
+  }
+  &:last-child {
+    margin-bottom: 8px;
+  }
+  &.currentVersion {
+    background: var(--muted-color);
+  }
+  .version {
+    margin-right: 16px;
+  }
+  .label {
+    background-color: white;
+    margin-right: 8px;
+  }
+}
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 8px;
+  height: 30px;
+  border-radius: 6px;
+  user-select: none;
+  transition: background-color 300ms ease-in-out;
+  border: 1px solid var(--separator-color);
+  > span {
+    display: none;
+  }
+  > div {
+    max-width: 80px;
+  }
+}
+
+.withVersions {
+  cursor: pointer;
+  > div {
+    margin-right: 5px;
+  }
+  > span {
+    display: unset;
+  }
+  &:hover {
+    background-color: var(--bg-dent);
+  }
+  [data-open='true'] & {
+    transition: color 300ms, background-color 300ms ease-in-out;
+    background-color: var(--bg-color);
+    color: var(--base-color);
+    &:hover {
+      background-color: var(--bg-color);
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.pillsContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  > div {
+    margin-right: 10px;
+    padding: 4px 8px;
+  }
+}
+.pillIcon {
+  margin-right: 6px;
+  font-size: var(--p-md);
+}
+
+.componentCount {
+  padding: 0 6px;
+  border-radius: 6px;
+  margin-right: 8px;
+  font-size: 12px;
+  background-color: var(--border-color);
+}

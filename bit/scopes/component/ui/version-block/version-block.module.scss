@@ -1,0 +1,60 @@
+.versionWrapper {
+  display: flex;
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    border-right: 1px solid var(--border-color);
+    padding-right: 22px;
+    padding-left: 10px;
+    padding-top: 24px;
+    text-align: right;
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
+  }
+}
+.emptyLabel {
+  height: 25px;
+  margin-bottom: 21px;
+}
+.link {
+  text-decoration: none;
+  color: var(--text-highlighted);
+  font-size: 14px;
+  margin-bottom: 8px;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+.right {
+  padding-top: 20px;
+  padding-left: 50px;
+  margin-bottom: 45px;
+  max-width: 700px;
+  .versionTitle {
+    color: var(--base-color);
+    font-weight: unset;
+    margin-bottom: 10px;
+  }
+  .titleLink {
+    text-decoration: none;
+  }
+  @media screen and (max-width: 768px) {
+    padding-left: 0;
+  }
+}
+
+.commitMessage {
+  font-size: 15px;
+}
+.emptyMessage {
+  font-size: 15px;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.placeholder {
+  width: 57px;
+}

@@ -1,0 +1,40 @@
+@import '~@teambit/ui-foundation.ui.constants.z-indexes/z-indexes.module.scss';
+
+.emptyContainer {
+  height: 100vh;
+}
+
+.workspaceWrapper {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; // TODO
+  height: 100vh;
+}
+
+.topbar {
+  flex: none;
+}
+
+.main {
+  flex: 1 1;
+
+  height: 100%;
+  overflow: hidden;
+}
+
+.splitter {
+  position: relative;
+
+  > :first-child {
+    z-index: $nav-z-index + 1;
+    position: absolute;
+  }
+}
+
+.sidebar {
+  min-width: 100px;
+  max-width: 85%;
+  position: relative;
+
+  height: 100%;
+}
